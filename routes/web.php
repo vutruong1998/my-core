@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use MyCore\Core\Core;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Core::authRoutes();
+Route::group(
+    [
+        'middleware' => [
+            'auth'
+        ]
+    ],
+    function () {
+        if (class_exists(Core::class)) {
+            Core::routes();
+        }
+    }
+);
+

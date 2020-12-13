@@ -1,0 +1,40 @@
+{
+    "name": "my-core/core",
+    "description": "This is Core",
+    "version": "1.0.0",
+    "keywords": [],
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "truong",
+            "email": "vucongtruong1998@gmail.com"
+        }
+    ],
+    "require": {
+        "astrotomic/laravel-translatable": "^11.6",
+        "mcamara/laravel-localization": "^1.3",
+        "prettus/l5-repository": "^2.6",
+        "spatie/laravel-permission": "^3.6",
+        "yajra/laravel-datatables-oracle": "^9.4"
+    },
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "MyCore\\Core\\": "src/",
+            "MyCore\\Core\\Database\\Seeds\\": "src/database/seeds/"
+        },
+        "files": [
+            "src/Helpers/helpers.php",
+            "src/define.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MyCore\\Core\\Providers\\CoreServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "autoload-dev": {}
+}
