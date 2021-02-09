@@ -15,8 +15,8 @@ class MenuController extends BaseController
 
     public function index()
     {
-        $title = trans('oc_menu::menu.heading.index');
-        return view('oc_menu::menu.index', compact(
+        $title = trans('mc_menu::menu.heading.index');
+        return view('mc_menu::menu.index', compact(
             'title'
         ));
     }

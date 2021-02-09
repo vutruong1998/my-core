@@ -46,23 +46,23 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->publishes([
             "{$this->assetsDir}/plugins" => public_path("assets/plugins")
-        ], "oc_menu_plugins");
+        ], "mc_menu_plugins");
 
         $this->publishes([
-            "{$this->configDir}/oc_menu.php" => config_path("oc_menu.php"),
-        ], "oc_menu_configs");
+            "{$this->configDir}/mc_menu.php" => config_path("mc_menu.php"),
+        ], "mc_menu_configs");
 
         $this->publishes([
             "{$this->assetsDir}/css" => public_path("assets/css"),
             "{$this->assetsDir}/fonts" => public_path("assets/fonts"),
             "{$this->assetsDir}/images" => public_path("assets/images"),
             "{$this->assetsDir}/js" => public_path("assets/js"),
-        ], "oc_menu_assets");
+        ], "mc_menu_assets");
 
-        $this->loadViewsFrom($this->viewDir, "oc_menu");
+        $this->loadViewsFrom($this->viewDir, "mc_menu");
 
         $this->loadMigrationsFrom($this->migrationsDir);
-        $this->loadTranslationsFrom($this->translationDir, "oc_menu");
+        $this->loadTranslationsFrom($this->translationDir, "mc_menu");
         $this->setObserves();
     }
 
