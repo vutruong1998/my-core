@@ -65,7 +65,7 @@
                         </div>
                     </div>
 
-                    <div class="language-select dropdown" id="language-select">
+                    {{-- <div class="language-select dropdown" id="language-select">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
                             <i class="flag-icon flag-icon-us"></i>
                         </a>
@@ -83,7 +83,7 @@
                                 <i class="flag-icon flag-icon-it"></i>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>

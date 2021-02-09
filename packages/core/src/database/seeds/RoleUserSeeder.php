@@ -5,10 +5,11 @@ namespace MyCore\Core\Database\Seeds;
 use Exception;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use MyCore\Core\Models\Permission;
+use Illuminate\Support\Facades\Hash;
 use MyCore\Core\Models\Role;
+use MyCore\Core\Models\User;
 
-class RolePermissionSeeder extends Seeder
+class RoleUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,24 +18,25 @@ class RolePermissionSeeder extends Seeder
      */
     public function run()
     {
-        $permissionIds = [];
+        $roleIds = [];
         DB::beginTransaction();
         try {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-            DB::table('roles')->truncate();
-            DB::table('role_has_permissions')->truncate();
+            DB::table('users')->truncate();
+            DB::table('model_has_roles')->truncate();
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-            $role = Role::create([
+            $user = User::create([
                 'name' => 'Admin',
-                'guard_name' => 'web',
+                'email' => 'admin@gmail.com',
+                'password' => Hash::make(123456),
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
-            $permissions = Permission::all();
-            foreach ($permissions as $permission) {
-                $permissionIds[] = $permission->id;
+            $roles = Role::all();
+            foreach ($roles as $role) {
+                $roleIds[] = $role->id;
             }
-            $role->syncPermissions($permissionIds);
+            $user->syncRoles($roleIds);
             DB::commit();
         } catch (Exception $e) {
             DB::rollBack();

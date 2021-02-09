@@ -42,7 +42,7 @@ $currentUrl = url()->current();
 															<div class="customlinkdiv" id="customlinkdiv">
 																<p id="menu-item-url-wrap">
 																	<label class="howto" for="custom-menu-item-url"> <span>Url</span>&nbsp;&nbsp;&nbsp;
-																		<input id="custom-menu-item-url" name="url" type="text" class="menu-item-textbox input-with-default-title" title="url">
+																		<input id="custom-menu-item-url" name="url" type="text" class="menu-item-textbox input-with-default-title" title="Url">
 																	</label>
 																</p>
 
@@ -122,10 +122,10 @@ $currentUrl = url()->current();
 														</div>
 
 														@else
-														<h3>Menu Creation</h3>
+														<h3>Tạo Menu</h3>
 														<div class="drag-instructions post-body-plain" style="">
 															<p>
-																Please enter the name and select "Tạo menu" button
+                                                                Hãy nhập tên menu và nhấn vào nút "Tạo menu"
 															</p>
 														</div>
 														@endif
