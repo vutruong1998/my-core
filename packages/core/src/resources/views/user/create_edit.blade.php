@@ -18,19 +18,19 @@
                             <div class="col-md-12"><label class=" form-control-label">Roles</label></div>
                             <div class="col-md-12">
                                 <div class="form-check">
-                                    @php 
-                                        $role_ids = $data->roles->map(function($it) {
+                                    @php
+                                        $role_ids = !empty($data) ? $data->roles->map(function($it) {
                                             return $it->id;
-                                        })->toArray();
+                                        })->toArray() : [];
                                     @endphp
                                     @if($roles->isNotEmpty())
                                         @foreach($roles as $role)
                                         <div class="checkbox">
                                             <label for="checkbox-{$role->id}" class="form-check-label ">
-                                                <input type="checkbox" 
-                                                    id="checkbox-{$role->id}" 
-                                                    name="roles[]" 
-                                                    value="{{ $role->id }}" 
+                                                <input type="checkbox"
+                                                    id="checkbox-{$role->id}"
+                                                    name="roles[]"
+                                                    value="{{ $role->id }}"
                                                     class="form-check-input"
                                                     {{ in_array( $role->id, $role_ids) ? 'checked' : '' }}
                                                     >
@@ -44,25 +44,25 @@
                         </div>
                         <div class="form-group has-success">
                             <label for="name" class="control-label mb-1">Name</label>
-                            <input id="name" 
-                                name="name" 
-                                type="text" 
-                                class="form-control" 
-                                value="{{ old('name', $data->name ?? '') }}" 
-                                autocomplete="off" 
-                                aria-required="true" 
+                            <input id="name"
+                                name="name"
+                                type="text"
+                                class="form-control"
+                                value="{{ old('name', $data->name ?? '') }}"
+                                autocomplete="off"
+                                aria-required="true"
                                 aria-invalid="false">
                             <span class="help-block field-validation-valid" data-valmsg-for="name" data-valmsg-replace="true"></span>
                         </div>
                         <div class="form-group">
                             <label for="email" class="control-label mb-1">Email</label>
-                            <input id="email" 
-                                name="email" 
-                                type="email" 
-                                class="form-control" 
-                                value="{{ old('email', $data->email ?? '') }}" 
-                                data-val="true" 
-                                data-val-required="Please enter email" 
+                            <input id="email"
+                                name="email"
+                                type="email"
+                                class="form-control"
+                                value="{{ old('email', $data->email ?? '') }}"
+                                data-val="true"
+                                data-val-required="Please enter email"
                                 autocomplete="off">
                         </div>
                         <div class="form-group">

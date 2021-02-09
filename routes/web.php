@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use MyCore\Core\Core;
+use MyCore\Menu\Menu;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Route::group(
     function () {
         if (class_exists(Core::class)) {
             Core::routes();
+            Menu::routes();
         }
     }
 );
-

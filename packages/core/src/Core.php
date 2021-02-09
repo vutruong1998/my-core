@@ -5,7 +5,8 @@ namespace MyCore\Core;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-class Core {
+class Core
+{
     public static function authRoutes()
     {
         Route::group([
@@ -16,7 +17,7 @@ class Core {
             ]);
         });
     }
-    
+
     public static function routes()
     {
         Route::group([

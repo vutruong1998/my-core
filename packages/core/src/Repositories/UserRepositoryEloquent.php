@@ -9,7 +9,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
  * Class UserRepositoryEloquent
- * @package namespace OneContent\Core\Repositories;
+ * @package namespace MyCore\Core\Repositories;
  */
 class UserRepositoryEloquent extends BaseRepositoryEloquent implements UserRepository
 {

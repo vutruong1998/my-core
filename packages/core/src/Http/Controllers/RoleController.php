@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace MyCore\Core\Http\Controllers;
 
@@ -13,7 +13,7 @@ use MyCore\Core\Repositories\RoleRepository;
 class RoleController extends CoreController {
     protected $roleRepository;
 
-    public function __construct(RoleRepository $roleRepository) 
+    public function __construct(RoleRepository $roleRepository)
     {
         $this->middleware('permission:roles.index');
         $this->roleRepository = $roleRepository;
@@ -97,7 +97,7 @@ class RoleController extends CoreController {
             DB::rollBack();
             return back()->withErrors($e->getMessage());
         }
-        
+
         return back()->with([
             'success_message' => 'Done'
         ]);

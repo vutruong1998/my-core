@@ -6,7 +6,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
  * Interface BaseRepository
- * @package namespace OneContent\Core\Repositories;
+ * @package namespace MyCore\Core\Repositories;
  */
 interface BaseRepository extends RepositoryInterface
 {

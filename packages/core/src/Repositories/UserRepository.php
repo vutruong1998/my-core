@@ -4,7 +4,7 @@ namespace MyCore\Core\Repositories;
 
 /**
  * Interface UserRepository
- * @package namespace OneContent\Core\Repositories;
+ * @package namespace MyCore\Core\Repositories;
  */
 interface UserRepository extends BaseRepository
 {

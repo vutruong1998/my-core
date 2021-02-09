@@ -9,7 +9,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
  * Class RoleRepositoryEloquent
- * @package namespace OneContent\Core\Repositories;
+ * @package namespace MyCore\Core\Repositories;
  */
 class RoleRepositoryEloquent extends BaseRepositoryEloquent implements RoleRepository
 {

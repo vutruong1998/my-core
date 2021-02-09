@@ -22,39 +22,39 @@
                             <div class="col-md-12">
                                 <div class="form-group has-success">
                                     <label for="name" class="control-label mb-1">Name</label>
-                                    <input id="name" 
-                                        name="name" 
-                                        type="text" 
-                                        class="form-control" 
-                                        value="{{ old('name', $data->name ?? '') }}" 
-                                        autocomplete="off" 
-                                        aria-required="true" 
+                                    <input id="name"
+                                        name="name"
+                                        type="text"
+                                        class="form-control"
+                                        value="{{ old('name', $data->name ?? '') }}"
+                                        autocomplete="off"
+                                        aria-required="true"
                                         aria-invalid="false">
                                     <span class="help-block field-validation-valid" data-valmsg-for="name" data-valmsg-replace="true"></span>
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                     </div>
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-check">
-                                    @php 
+                                    @php
                                         $permission_ids = [];
-                                        $permission_ids = $data->permissions->map(function ($it) {
+                                        $permission_ids = !empty($data) ? $data->permissions->map(function ($it) {
                                             return $it->id;
-                                        })->toArray();
+                                        })->toArray() : [];
                                     @endphp
                                     @if($permissions->isNotEmpty())
                                         @foreach($permissions as $permission)
                                         <div class="checkbox">
                                             <label for="checkbox-{$role->id}" class="form-check-label ">
-                                                <input type="checkbox" 
-                                                    id="checkbox-{$role->id}" 
-                                                    name="permissions[]" 
-                                                    value="{{ $permission->id }}" 
+                                                <input type="checkbox"
+                                                    id="checkbox-{$role->id}"
+                                                    name="permissions[]"
+                                                    value="{{ $permission->id }}"
                                                     class="form-check-input"
                                                     {{ in_array($permission->id, $permission_ids) ? 'checked' : '' }}
                                                     >
@@ -65,7 +65,7 @@
                                     @endif
                                 </div>
                             </div>
-                        </div>    
+                        </div>
                     </div>
                 </div>
             </div>

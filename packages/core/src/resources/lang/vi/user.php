@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 return [
     'heading' => [
-        'index' => 'Danh sách user',
-        'create' => 'Tạo user',
-        'edit' => 'Sửa user'
+        'index' => 'Danh sách người dùng',
+        'create' => 'Tạo người dùng',
+        'edit' => 'Sửa người dùng'
     ],
     'table' => [
         'no_order' => "STT",

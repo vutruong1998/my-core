@@ -37,6 +37,24 @@ return [
                 'name' => 'roles.destroy',
                 'guard_name' => 'web'
             ]
+        ],
+        'menus' => [
+            [
+                'name' => 'menus.index',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'menus.create',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'menus.edit',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'menus.destroy',
+                'guard_name' => 'web'
+            ]
         ]
     ]
 ];

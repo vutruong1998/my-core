@@ -1,0 +1,34 @@
+{
+    "name": "my-core/menu",
+    "description": "This is Menu module for My Core",
+    "version": "1.0.0",
+    "keywords": [],
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "truong",
+            "email": "vucongtruong1998@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "MyCore\\Menu\\": "src/",
+            "MyCore\\Menu\\Database\\Seeds\\": "src/database/seeds/"
+        },
+        "files": [
+            "src/Helpers/helpers.php",
+            "src/define.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MyCore\\Menu\\Providers\\ServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "autoload-dev": {}
+}

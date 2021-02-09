@@ -4,7 +4,7 @@ namespace MyCore\Core\Repositories;
 
 /**
  * Interface RoleRepository
- * @package namespace OneContent\Core\Repositories;
+ * @package namespace MyCore\Core\Repositories;
  */
 interface RoleRepository extends BaseRepository
 {

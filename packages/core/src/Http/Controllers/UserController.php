@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace MyCore\Core\Http\Controllers;
 
@@ -10,7 +10,7 @@ use MyCore\Core\Models\Role;
 use MyCore\Core\Models\User;
 use MyCore\Core\Repositories\UserRepository;
 
-class UserController extends BaseController 
+class UserController extends BaseController
 {
     protected $userRepository;
 
@@ -19,7 +19,7 @@ class UserController extends BaseController
         $this->middleware('permission:users.index');
         $this->userRepository = $userRepository;
     }
-    
+
     public function index()
     {
         $title = trans('mc_core::user.heading.index');
@@ -98,7 +98,7 @@ class UserController extends BaseController
         } catch (Exception $e) {
             return back()->withErrors($e->getMessage());
         }
-       
+
         return back()->with([
             'success_message' => 'Done'
         ]);

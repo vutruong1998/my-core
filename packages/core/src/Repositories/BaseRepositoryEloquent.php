@@ -5,7 +5,7 @@ use Prettus\Repository\Eloquent\BaseRepository as PrettusRepositoryEloquent;
 
 /**
  * Class BaseRepositoryEloquent
- * @package namespace OneContent\Core\Repositories;
+ * @package namespace MyCore\Core\Repositories;
  */
 abstract class BaseRepositoryEloquent extends PrettusRepositoryEloquent implements BaseRepository
 {
