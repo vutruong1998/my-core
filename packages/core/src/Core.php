@@ -26,6 +26,7 @@ class Core
             Route::get('/', 'CoreController@index')->name('index');
             Route::resource('users', 'UserController')->except('show');
             Route::get('users/datatable', 'UserController@datatable')->name('users.datatable');
+            Route::post('users/sortable', 'UserController@sortable')->name('users.sortable');
             Route::resource('roles', 'RoleController')->except('show');
             Route::get('roles/datatable', 'RoleController@datatable')->name('roles.datatable');
         });

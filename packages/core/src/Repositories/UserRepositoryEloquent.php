@@ -2,6 +2,7 @@
 
 namespace MyCore\Core\Repositories;
 
+use Illuminate\Support\Facades\DB;
 use MyCore\Core\Repositories\BaseRepositoryEloquent;
 use MyCore\Core\Repositories\UserRepository;
 use MyCore\Core\Models\User;
@@ -39,5 +40,25 @@ class UserRepositoryEloquent extends BaseRepositoryEloquent implements UserRepos
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    public function datatable(array $with = [])
+    {
+        return $this->model->with($with)->orderBy('position');
+    }
+
+    public function massUpdate(array $array = [])
+    {
+        $table = $this->model::getModel()->getTable();
+        $caseString = 'case id';
+        $ids = '';
+        foreach ($array as $value) {
+            $id = $value['id'];
+            $position = $value['position'];
+            $caseString .= " when $id then $position";
+            $ids .= " $id,";
+        }
+        $ids = trim($ids, ',');
+        DB::update("update $table set position = $caseString end where id in ($ids)");
     }
 }

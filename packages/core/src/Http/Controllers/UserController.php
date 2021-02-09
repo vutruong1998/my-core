@@ -4,6 +4,7 @@ namespace MyCore\Core\Http\Controllers;
 
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use MyCore\Core\Http\Controllers\BaseController;
 use MyCore\Core\Models\Role;
@@ -118,5 +119,19 @@ class UserController extends BaseController
         if (!array_key_exists('roles', $input)) {
             $input['roles'] = [];
         }
+    }
+
+    public function sortable(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $array = $request->orders;
+            $this->userRepository->massUpdate($array);
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollBack();
+            return response()->json($e, 404);
+        }
+        return response()->json(['code' => 200]);
     }
 }
