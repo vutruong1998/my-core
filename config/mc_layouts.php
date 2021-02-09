@@ -4,11 +4,13 @@ return [
     'main' => [
         [
             'text' => 'Dashboard',
-            'route_action' => 'index'
+            'route_action' => 'index',
+            'route_actives' => 'index'
         ],
         [
             'text' => 'Menu',
             'route_action' => 'menus.index',
+            'route_actives' => 'menus.*',
             'permissions' => [
                 'menus.index'
             ]
@@ -16,6 +18,10 @@ return [
         [
             'text' => 'System',
             'route_action' => '',
+            'route_actives' => [
+                'users.*',
+                'roles.*'
+            ],
             'permissions' => [
                 'users.index',
                 'roles.index'
@@ -24,15 +30,23 @@ return [
                 [
                     'text' => 'Users',
                     'route_action' => 'users.index',
+                    'route_actives' => [
+                        'users.*'
+                    ],
                     'permission' => 'users.index'
                 ],
                 [
                     'text' => 'Roles',
                     'route_action' => 'roles.index',
+                    'route_actives' => [
+                        'roles.*'
+                    ],
                     'permission' => 'roles.index'
                 ],
                 [
                     'text' => 'Config general',
+                    'route_actives' => [
+                    ],
                     'route_action' => ''
                 ]
             ]

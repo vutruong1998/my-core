@@ -7,6 +7,8 @@ use Spatie\Permission\Middlewares\PermissionMiddleware;
 use Spatie\Permission\Middlewares\RoleOrPermissionMiddleware;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use MyCore\Core\Repositories\PermissionRepository;
+use MyCore\Core\Repositories\PermissionRepositoryEloquent;
 use MyCore\Core\Repositories\RoleRepository;
 use MyCore\Core\Repositories\RoleRepositoryEloquent;
 use MyCore\Core\Repositories\UserRepository;
@@ -26,6 +28,7 @@ class CoreServiceProvider extends ServiceProvider {
      * @var array
      */
     public $bindings = [
+        PermissionRepository::class => PermissionRepositoryEloquent::class,
         UserRepository::class => UserRepositoryEloquent::class,
         RoleRepository::class => RoleRepositoryEloquent::class
     ];

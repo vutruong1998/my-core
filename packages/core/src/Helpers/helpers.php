@@ -17,14 +17,23 @@ if (!function_exists('formatDate')) {
     }
 }
 
-if (!function_exists('checkActiveMenu')) {
-    function checkActiveMenu($currentRoute, $routeAction = null) {
-        return !empty($routeAction) && strcmp($currentRoute, $routeAction) == 0 ? 'active' : '';
+if (!function_exists('activeMenu')) {
+    function activeMenu($routeActive = null)
+    {
+        return \Route::is($routeActive) ? 'active' : '';
     }
 }
 
-if (!function_exists('checkShowDropdown')) {
-    function checkShowDropdown($currentRoute, $perms = []) {
-        return in_array($currentRoute, $perms) ? 'show' : '';
+if (!function_exists('showDropdown')) {
+    function showDropdown(array $routeActives = [])
+    {
+        $uri = \Route::currentRouteName();
+        $arr = explode(".", $uri, 2);
+        $first = $arr[0];
+        foreach ($routeActives as $route) {
+            if (str_replace('.*', '', $route) == $first) {
+                return \Route::is($route) ? 'show' : '';
+            }
+        }
     }
 }

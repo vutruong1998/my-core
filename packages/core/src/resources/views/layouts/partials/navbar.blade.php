@@ -1,3 +1,4 @@
+@inject('permissionRepository', 'MyCore\Core\Repositories\PermissionRepository')
 <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
 
@@ -17,21 +18,20 @@
                 @foreach ($configLayouts as $key => $value)
                     @php
                         $perms = $value['permissions'] ?? [];
-                        $permissions = \MyCore\Core\Models\Permission::where('guard_name', 'web')->pluck('name')->toArray();
-                        $currentRoute = \Route::currentRouteName();
+                        $permissions = $permissionRepository->where('guard_name', 'web')->pluck('name')->toArray();
                     @endphp
                     @if(!isset($value['children']))
                     <li>
-                        <a class="{{ checkActiveMenu($currentRoute, $value['route_action']) }}"
+                        <a class="{{ activeMenu($value['route_actives']) }}"
                         href="{{ !empty($value['route_action']) ? route("{$value['route_action']}") : "#" }}">
                             <i class="menu-icon fa fa-dashboard"></i>
                             {!! $value['text'] ?? "" !!}
                         </a>
                     </li>
                     @else
-                    <li class="menu-item-has-children dropdown {{ checkShowDropdown($currentRoute, $perms) }}">
+                    <li class="menu-item-has-children dropdown {{ showDropdown($value['route_actives']) }}">
                         <a href="{{ !empty($value['route_action']) ? route("{$value['route_action']}") : '#' }}"
-                            class="dropdown-toggle"
+                            class="dropdown-toggle {{ activeMenu($value['route_actives']) }}"
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
@@ -39,12 +39,12 @@
                             <i class="menu-icon fa fa-th"></i>{!! $value['text'] ?? "" !!}
                         </a>
                         @if(isset($value['children']) && !empty($value['children']))
-                            <ul class="sub-menu children dropdown-menu {{ checkShowDropdown($currentRoute, $perms) }}">
+                            <ul class="sub-menu children dropdown-menu {{ showDropdown($value['route_actives']) }}">
                                 @foreach ($value['children'] as $val)
                                     <li><i class="menu-icon fa fa-th"></i>
                                         @if(isset($val['permission']) && !empty($val['permission']))
                                             @can($val['permission'])
-                                            <a class="{{ checkActiveMenu($currentRoute, $val['route_action']) }}" href="{{ !empty($val['route_action']) ? route("{$val['route_action']}") : '#' }}">
+                                            <a class="{{ activeMenu($val['route_actives']) }}" href="{{ !empty($val['route_action']) ? route("{$val['route_action']}") : '#' }}">
                                                 {!! $val['text'] ?? "" !!}
                                             </a>
                                             @endcan
