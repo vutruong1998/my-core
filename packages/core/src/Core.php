@@ -27,6 +27,7 @@ class Core
             Route::resource('users', 'UserController')->except('show');
             Route::get('users/datatable', 'UserController@datatable')->name('users.datatable');
             Route::post('users/sortable', 'UserController@sortable')->name('users.sortable');
+            Route::post('users/toggle-active', 'UserController@toggleActive')->name('users.toggle_active');
             Route::resource('roles', 'RoleController')->except('show');
             Route::get('roles/datatable', 'RoleController@datatable')->name('roles.datatable');
         });

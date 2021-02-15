@@ -29,6 +29,7 @@ class RoleUserSeeder extends Seeder
                 'name' => 'Admin',
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make(123456),
+                'active' => User::STATUS_ACTIVE,
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

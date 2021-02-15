@@ -24,7 +24,7 @@
                     <li>
                         <a class="{{ activeMenu($value['route_actives']) }}"
                         href="{{ !empty($value['route_action']) ? route("{$value['route_action']}") : "#" }}">
-                            <i class="menu-icon fa fa-dashboard"></i>
+                            <i class="menu-icon fa fa-th"></i>
                             {!! $value['text'] ?? "" !!}
                         </a>
                     </li>

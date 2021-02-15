@@ -11,6 +11,7 @@ return [
         'name' => "Tên",
         'role' => "Quyền",
         'date_created' => "Ngày tạo",
+        'active' => "Kích hoạt",
         'action' => 'Hành động'
     ]
 ];

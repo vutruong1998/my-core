@@ -37,8 +37,15 @@ class UserController extends BaseController
             return formatDate($data->created_at, PHP_DATE);
         });
 
+        $dataTables->addColumn('active', function ($data) {
+            return view('mc_core::user.columns.active', compact('data'));
+        });
+
         $dataTables->addColumn('action', function ($data) {
-            return "<a class='btn btn-warning btn-sm' href=". route('users.edit', $data->id) .">Sửa</a>";
+            return '
+            <a class="btn btn-outline-primary btn-sm btn-view" data-id="'. $data->id .'" href="javascript:void(0)"><i class="fa fa-eye"></i></a>
+            <a class="btn btn-outline-warning btn-sm" href="'. route('users.edit', $data->id) .'"><i class="fa fa-pencil"></i></a>
+            <a class="btn btn-outline-danger btn-sm btn-delete" href="'. route('users.destroy', $data->id) .'"><i class="fa fa-trash"></i></a>';
         });
 
         $dataTables->escapeColumns([]);
@@ -101,7 +108,7 @@ class UserController extends BaseController
         }
 
         return back()->with([
-            'success_message' => 'Done'
+            'success_message' => 'Sửa thành công'
         ]);
     }
 
@@ -110,7 +117,7 @@ class UserController extends BaseController
         $user = $this->userRepository->find($id);
         $user->delete();
         return redirect()->route('users.index')->with([
-            'success_message' => 'Done'
+            'success_message' => 'Xoá thành công'
         ]);
     }
 
@@ -133,5 +140,12 @@ class UserController extends BaseController
             return response()->json($e, 404);
         }
         return response()->json(['code' => 200]);
+    }
+
+    public function toggleActive(Request $request)
+    {
+        $active = filter_var($request->active, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+        $this->userRepository->update(['active' => $active], $request->id);
+        return response()->json(true);
     }
 }

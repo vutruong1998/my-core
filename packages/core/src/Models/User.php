@@ -12,10 +12,14 @@ class User extends Authenticatable {
 
     protected $guard_name = 'web'; // laravel-permission
 
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+
     protected $fillable = [
         'name',
         'email',
         'password',
-        'position'
+        'position',
+        'active'
     ];
 }
