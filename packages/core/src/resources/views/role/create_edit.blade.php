@@ -48,18 +48,25 @@
                                         })->toArray() : [];
                                     @endphp
                                     @if($permissions->isNotEmpty())
-                                        @foreach($permissions as $permission)
-                                        <div class="checkbox">
-                                            <label for="checkbox-{$role->id}" class="form-check-label ">
-                                                <input type="checkbox"
-                                                    id="checkbox-{$role->id}"
-                                                    name="permissions[]"
-                                                    value="{{ $permission->id }}"
-                                                    class="form-check-input"
-                                                    {{ in_array($permission->id, $permission_ids) ? 'checked' : '' }}
-                                                    >
-                                                {!! $permission->name !!}
-                                            </label>
+                                        @foreach($permissions as $key => $permission)
+                                        <div class="form-group group-perms">
+                                            <input type="checkbox" class="check-all" /> <label> {!! $key !!}</label><br>
+                                            <div class="btn-group permissions">
+                                                @if(!empty($permission))
+                                                    @foreach($permission as $perm)
+                                                        <label for="checkbox-{{$perm->id}}" class="btn btn-default form-control">
+                                                            <input 
+                                                            id="checkbox-{{$perm->id}}"
+                                                            value="{{ $perm->id }}"
+                                                            name="permissions[]"
+                                                            type="checkbox"
+                                                            class="check-single"
+                                                            {{ in_array($perm->id, $permission_ids) ? 'checked' : '' }}
+                                                            > {!! $perm->title !!}
+                                                        </label>
+                                                    @endforeach
+                                                @endif
+                                            </div>
                                         </div>
                                         @endforeach
                                     @endif
@@ -77,4 +84,38 @@
         </form>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    jQuery(function ($) {
+        $('div.group-perms').each(function (k, v) {
+            var totalSibs = $(v).children('.btn-group').find('input[type="checkbox"]').length;
+            var checkedSibs = $(v).children('.btn-group').find('input[type="checkbox"]:checked').length;
+            if (checkedSibs === 0) {
+                $(v).find('input[type="checkbox"]').prop('checked', false);
+            } else if (checkedSibs === totalSibs) {
+                $(v).find('input[type="checkbox"]').prop('checked', true);
+            } else {
+                $(v).find('input.check-all').prop('checked', false);
+            }
+        })
+
+        $('.check-all').click(function () {
+            $(this).parent('.form-group').children('.btn-group').find('input[type="checkbox"]').prop('checked', $(this).prop('checked'))
+        });
+
+        $('.permissions').parent('.form-group').children('.btn-group').find('input[type="checkbox"]').change(function () {
+            var totalSibs = $(this).parent().parent().find('input[type="checkbox"]').length;
+            var checkedSibs = $(this).parent().parent().find('input[type="checkbox"]:checked').length;
+
+            if (checkedSibs === 0) {
+                $(this).parent().parent().parent().find('input[type="checkbox"]').prop('checked', false);
+            } else if (checkedSibs === totalSibs) {
+                $(this).parent().parent().parent().find('input[type="checkbox"]').prop('checked', true);
+            } else {
+                $(this).parent().parent().parent().find('input.check-all').prop('checked', false)
+            }
+        })
+    })
+</script>
 @endsection

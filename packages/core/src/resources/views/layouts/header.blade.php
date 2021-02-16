@@ -18,14 +18,14 @@
     <link rel="stylesheet" href="{{ asset('vendor/harimayco-menu/style.css') }}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-    @yield('style')
     <style>
         .main-menu > ul.navbar-nav > li > a.active {
-            color:red !important;
+            color:rgb(219, 247, 120) !important;
         }
 
         .main-menu > ul.navbar-nav > li.menu-item-has-children > ul.sub-menu > li > a.active {
-            color:red !important;
+            color:rgb(219, 247, 120) !important;
         }
     </style>
+    @yield('style')
 </head>

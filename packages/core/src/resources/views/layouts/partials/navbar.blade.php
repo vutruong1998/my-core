@@ -22,11 +22,15 @@
                     @endphp
                     @if(!isset($value['children']))
                     <li>
-                        <a class="{{ activeMenu($value['route_actives']) }}"
-                        href="{{ !empty($value['route_action']) ? route("{$value['route_action']}") : "#" }}">
-                            <i class="menu-icon fa fa-th"></i>
-                            {!! $value['text'] ?? "" !!}
-                        </a>
+                        @if(isset($value['permissions']) && !empty($value['permissions']))
+                            @can($value['permissions'])
+                            <a class="{{ activeMenu($value['route_actives']) }}"
+                            href="{{ !empty($value['route_action']) ? route("{$value['route_action']}") : "#" }}">
+                                <i class="menu-icon fa fa-th"></i>
+                                {!! $value['text'] ?? "" !!}
+                            </a>
+                            @endcan
+                        @endif
                     </li>
                     @else
                     <li class="menu-item-has-children dropdown {{ showDropdown($value['route_actives']) }}">

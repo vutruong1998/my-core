@@ -23,9 +23,10 @@ Route::group(
         ]
     ],
     function () {
-        if (class_exists(Core::class)) {
-            Core::routes();
-            Menu::routes();
-        }
+        Core::routes();
+        Menu::routes();
+        Route::group(['prefix' => 'medias'], function () {
+            \UniSharp\LaravelFilemanager\Lfm::routes();
+        });
     }
 );

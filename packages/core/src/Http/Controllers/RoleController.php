@@ -78,7 +78,7 @@ class RoleController extends CoreController {
     {
         $title = trans('mc_core::role.heading.edit');
         $data = $this->roleRepository->find($id);
-        $permissions = Permission::where('guard_name', 'web')->get();
+        $permissions = Permission::where('guard_name', 'web')->get()->groupBy('group_name');
         return view('mc_core::role.create_edit', compact(
             'title',
             'data',

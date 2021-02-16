@@ -5,15 +5,20 @@ return [
         [
             'text' => 'Dashboard',
             'route_action' => 'index',
-            'route_actives' => 'index'
+            'route_actives' => 'index',
+            'permissions' => 'index'
         ],
         [
             'text' => 'Menu',
             'route_action' => 'menus.index',
             'route_actives' => 'menus.*',
-            'permissions' => [
-                'menus.index'
-            ]
+            'permissions' => 'menus.index'
+        ],
+        [
+            'text' => 'Media',
+            'route_action' => 'unisharp.lfm.show',
+            'route_actives' => 'unisharp.lfm*',
+            'permissions' => 'medias.index'
         ],
         [
             'text' => 'System',

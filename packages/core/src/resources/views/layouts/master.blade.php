@@ -4,6 +4,7 @@
 @include('mc_core::layouts.header')
 
 <body>
+    {{-- @yield('content') --}}
 
     @include('mc_core::layouts.partials.navbar')
 

@@ -23,7 +23,7 @@ class Core
         Route::group([
             'namespace' => 'MyCore\Core\Http\Controllers'
         ], function () {
-            Route::get('/', 'CoreController@index')->name('index');
+            Route::get('/', 'CoreController@index')->name('index')->middleware('permission:index');
             Route::resource('users', 'UserController')->except('show');
             Route::get('users/datatable', 'UserController@datatable')->name('users.datatable');
             Route::post('users/sortable', 'UserController@sortable')->name('users.sortable');
