@@ -40,37 +40,35 @@
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-check">
-                                    @php
-                                        $permission_ids = [];
-                                        $permission_ids = !empty($data) ? $data->permissions->map(function ($it) {
-                                            return $it->id;
-                                        })->toArray() : [];
-                                    @endphp
-                                    @if($permissions->isNotEmpty())
-                                        @foreach($permissions as $key => $permission)
-                                        <div class="form-group group-perms">
-                                            <input type="checkbox" class="check-all" /> <label> {!! $key !!}</label><br>
-                                            <div class="btn-group permissions">
-                                                @if(!empty($permission))
-                                                    @foreach($permission as $perm)
-                                                        <label for="checkbox-{{$perm->id}}" class="btn btn-default form-control">
-                                                            <input 
-                                                            id="checkbox-{{$perm->id}}"
-                                                            value="{{ $perm->id }}"
-                                                            name="permissions[]"
-                                                            type="checkbox"
-                                                            class="check-single"
-                                                            {{ in_array($perm->id, $permission_ids) ? 'checked' : '' }}
-                                                            > {!! $perm->title !!}
-                                                        </label>
-                                                    @endforeach
-                                                @endif
-                                            </div>
+                                @php
+                                    $permission_ids = [];
+                                    $permission_ids = !empty($data) ? $data->permissions->map(function ($it) {
+                                        return $it->id;
+                                    })->toArray() : [];
+                                @endphp
+                                @if($permissions->isNotEmpty())
+                                    @foreach($permissions as $key => $permission)
+                                    <div class="form-group group-perms">
+                                        <input type="checkbox" class="check-all" /> <label> {!! $key !!}</label><br>
+                                        <div class="btn-group permissions">
+                                            @if(!empty($permission))
+                                                @foreach($permission as $perm)
+                                                    <label for="checkbox-{{$perm->id}}" class="btn btn-default form-control">
+                                                        <input 
+                                                        id="checkbox-{{$perm->id}}"
+                                                        value="{{ $perm->id }}"
+                                                        name="permissions[]"
+                                                        type="checkbox"
+                                                        class="check-single"
+                                                        {{ in_array($perm->id, $permission_ids) ? 'checked' : '' }}
+                                                        > {!! $perm->title !!}
+                                                    </label>
+                                                @endforeach
+                                            @endif
                                         </div>
-                                        @endforeach
-                                    @endif
-                                </div>
+                                    </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
