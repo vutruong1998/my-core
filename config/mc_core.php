@@ -18,6 +18,12 @@ return [
                 'group_name' => "Người dùng"
             ],
             [
+                'title' => "Xem chi tiết",
+                'name' => 'users.show',
+                'guard_name' => 'web',
+                'group_name' => "Người dùng"
+            ],
+            [
                 'title' => "Tạo",
                 'name' => 'users.create',
                 'guard_name' => 'web',
@@ -40,6 +46,12 @@ return [
             [
                 'title' => "Truy cập",
                 'name' => 'roles.index',
+                'guard_name' => 'web',
+                'group_name' => "Quyền"
+            ],
+            [
+                'title' => "Xem chi tiết",
+                'name' => 'roles.show',
                 'guard_name' => 'web',
                 'group_name' => "Quyền"
             ],

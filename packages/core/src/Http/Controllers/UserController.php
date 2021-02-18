@@ -42,10 +42,22 @@ class UserController extends BaseController
         });
 
         $dataTables->addColumn('action', function ($data) {
-            return '
-            <a class="btn btn-outline-primary btn-sm btn-view" data-id="'. $data->id .'" href="javascript:void(0)"><i class="fa fa-eye"></i></a>
-            <a class="btn btn-outline-warning btn-sm" href="'. route('users.edit', $data->id) .'"><i class="fa fa-pencil"></i></a>
-            <a class="btn btn-outline-danger btn-sm btn-delete" href="'. route('users.destroy', $data->id) .'"><i class="fa fa-trash"></i></a>';
+            return view('mc_core::layouts.partials.components.table_buttons', [
+                'buttons' => [
+                    view('mc_core::layouts.partials.components.buttons.show_mini', [
+                        'permission' => 'users.show',
+                        'id' => $data->id ?? ''
+                    ])->render(),
+                    view('mc_core::layouts.partials.components.buttons.edit_mini', [
+                        'link' => route('users.edit', $data->id),
+                        'permission' => 'users.edit'
+                    ])->render(),
+                    view('mc_core::layouts.partials.components.buttons.delete_mini', [
+                        'link' => route('users.destroy', $data->id),
+                        'permission' => 'users.destroy'
+                    ])->render()
+                ]
+            ])->render();
         });
 
         $dataTables->escapeColumns([]);

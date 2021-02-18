@@ -2,7 +2,9 @@
 
 @section('content')
 @section('create-button')
-<a class="btn btn-primary" href="{{ route('roles.create') }}">Tạo mới</a>
+    @can('roles.create')
+        <a class="btn btn-primary" href="{{ route('roles.create') }}">Tạo mới</a>
+    @endcan
 @endsection
 <table class="table">
     <thead>
