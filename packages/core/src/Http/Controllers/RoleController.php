@@ -61,7 +61,7 @@ class RoleController extends CoreController {
     public function create()
     {
         $title = trans('mc_core::role.heading.create');
-        $permissions = Permission::where('guard_name', 'web')->get();
+        $permissions = Permission::where('guard_name', 'web')->get()->groupBy('group_name');
         return view('mc_core::role.create_edit', compact(
             'title',
             'permissions'
