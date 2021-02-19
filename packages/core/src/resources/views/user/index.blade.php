@@ -103,6 +103,10 @@
                         '<td>'+d.name+'</td>'+
                     '</tr>'+
                     '<tr>'+
+                        '<td>Email:</td>'+
+                        '<td>'+d.email+'</td>'+
+                    '</tr>'+
+                    '<tr>'+
                         '<td>Ngày tạo:</td>'+
                         '<td>'+d.created_at+'</td>'+
                     '</tr>'+
